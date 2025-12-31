@@ -5,7 +5,7 @@ import path from 'path'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
-  base: '/portafolio/', // Cambia 'portfolio' por el nombre exacto de tu repositorio
+  base: process.env.NODE_ENV === 'production' ? '/portfolio/' : '/',
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
@@ -18,6 +18,11 @@ export default defineConfig({
   build: {
     outDir: 'dist',
     assetsDir: 'assets',
-    sourcemap: false
+    sourcemap: false,
+    rollupOptions: {
+      output: {
+        manualChunks: undefined
+      }
+    }
   }
 })
