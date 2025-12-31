@@ -5,6 +5,7 @@ import path from 'path'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
+  base: '/portafolio/', // Cambia 'portfolio' por el nombre exacto de tu repositorio
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
@@ -14,4 +15,9 @@ export default defineConfig({
       '@assets': path.resolve(__dirname, './src/assets'),
     },
   },
+  build: {
+    outDir: 'dist',
+    assetsDir: 'assets',
+    sourcemap: false
+  }
 })
