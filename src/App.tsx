@@ -2,6 +2,7 @@ import { ChakraProvider, defaultSystem } from '@chakra-ui/react'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Main from '@pages/Main'
 import ErrorPage from '@pages/Error'
+import './locales/i18n'
 
 const getRouter = () =>
   createBrowserRouter([

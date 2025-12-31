@@ -1,0 +1,40 @@
+{
+  "name": "Ing. Sistemas Emmanuel Cruz",
+  "occupation": "Full Stack Software Developer",
+  "education": "Especialista en Desarrollo Web y Aplicaciones Móviles",
+  "welcome": "Bienvenido a mi Portfolio",
+  "mainContent": "Este es el contenido principal de tu sitio web",
+  "nav": {
+    "home": "Inicio",
+    "about": "Acerca de",
+    "projects": "Proyectos",
+    "contact": "Contacto"
+  },
+  "sections": {
+    "home": "Home",
+    "about": "Acerca de",
+    "projects": "Proyectos", 
+    "contact": "Contacto",
+    "homeContent": "Contenido de la sección home",
+    "aboutContent": "Contenido de la sección about",
+    "projectsContent": "Contenido de la sección projects",
+    "contactContent": "Contenido de la sección contact"
+  },
+  "steps": {
+    "expertise": {
+      "label": "Expertise",
+      "title": "Expertise en Sistemas Críticos",
+      "description": "• Sector Bancario Senior: +10 años liderando el desarrollo de apps móviles y arquitectura para instituciones como BAC Credomatic, Banco Nacional y GFT/Sophos.\n\n• Infraestructura Robusta: Experto en diseño, desarrollo y puesta en producción de microservicios en Java para ecosistemas financieros de alta disponibilidad.\n\n• Sector Público y Modernización: Especialista en el mantenimiento y actualización de plataformas críticas del Gobierno de Costa Rica, garantizando seguridad y estabilidad."
+    },
+    "stack": {
+      "label": "Stack Tecnológico",
+      "title": "Mi Stack Tecnológico",
+      "description": "• Mobile: Android Nativo (Kotlin, Java) y Flutter.\n\n• Backend: Java (Spring Boot), .NET (C#) y Microservicios.\n\n• Web: Angular y React.\n\n• Base de Datos: MySQL, MongoDB y SQL Server.\n\n• Especialidad: Arquitecturas bancarias, seguridad financiera y despliegue de sistemas de misión crítica."
+    },
+    "achievements": {
+      "label": "Logros",
+      "title": "Logros y Proyectos Destacados",
+      "description": "• Escalabilidad Real: Implementación de microservicios bancarios con alta demanda (+100,000 usuarios diarios).\n\n• Innovación & Robótica: Automatización de almacenes mediante integración de robots móviles autónomos (MiR).\n\n• Ganador de Hackatons: Primer lugar en múltiples competencias de desarrollo gubernamentales y universitarias."
+    }
+  }
+}

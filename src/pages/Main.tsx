@@ -1,56 +1,55 @@
 import { Box, Container, Heading, Text, VStack } from '@chakra-ui/react'
-import Menu from '@shared/Navbar/Menu'
+import Menu from '@/components/shared/Navbar/Menu'
 import PresentationBlock from '@shared/PresentationBlock/PresentationBlock'
+import StepsComponent from '@shared/StepsComponent/StepsComponent'
+import { useState } from 'react'
 
 export default function Main() {
+  const [activeSection, setActiveSection] = useState('home')
+
+  const renderActiveSection = () => {
+    switch (activeSection) {
+      case 'home':
+        return <PresentationBlock />
+      case 'about':
+        return <StepsComponent />
+      case 'projects':
+        return (
+          <Container maxW="container.xl" py={16}>
+            <VStack align="center" textAlign="center">
+              <Heading as="h2" size="lg" mb={4}>
+                Proyectos
+              </Heading>
+              <Text>Contenido de la sección projects - En construcción</Text>
+            </VStack>
+          </Container>
+        )
+      case 'contact':
+        return (
+          <Container maxW="container.xl" py={16}>
+            <VStack align="center" textAlign="center">
+              <Heading as="h2" size="lg" mb={4}>
+                Contacto
+              </Heading>
+              <Text>Contenido de la sección contact - En construcción</Text>
+            </VStack>
+          </Container>
+        )
+      default:
+        return <PresentationBlock />
+    }
+  }
+
   return (
     <Box>
       {/* Menu Component */}
-      <Menu />
+      <Menu
+        onNavigate={setActiveSection}
+        activeSection={activeSection}
+      />
 
-      {/* Presentation Block */}
-      <PresentationBlock />
-
-      {/* Main Content */}
-      <Container maxW="container.xl" py={16}>
-        <VStack align="center" textAlign="center">
-          <Heading as="h1" size="2xl">
-            Bienvenido a mi Portfolio
-          </Heading>
-          <Text fontSize="lg" color="gray.600">
-            Este es el contenido principal de tu sitio web
-          </Text>
-
-          {/* Secciones */}
-          <Box w="full" mt={8}>
-            <Heading as="h2" size="lg" mb={4} id="home">
-              Home
-            </Heading>
-            <Text>Contenido de la sección home</Text>
-          </Box>
-
-          <Box w="full">
-            <Heading as="h2" size="lg" mb={4} id="about">
-              Acerca de
-            </Heading>
-            <Text>Contenido de la sección about</Text>
-          </Box>
-
-          <Box w="full">
-            <Heading as="h2" size="lg" mb={4} id="projects">
-              Proyectos
-            </Heading>
-            <Text>Contenido de la sección projects</Text>
-          </Box>
-
-          <Box w="full">
-            <Heading as="h2" size="lg" mb={4} id="contact">
-              Contacto
-            </Heading>
-            <Text>Contenido de la sección contact</Text>
-          </Box>
-        </VStack>
-      </Container>
+      {/* Render solo la sección activa */}
+      {renderActiveSection()}
     </Box>
   )
 }
