@@ -143,7 +143,7 @@ export default function StepsComponent() {
   if (isMobile) {
     // Vista mobile - contenido centrado con botones de navegación
     return (
-      <Box py={16} px={4} bg="#eee">
+      <Box py={16} px={4}>
         <Box
           maxW="400px"
           minH="600px"
@@ -241,12 +241,12 @@ export default function StepsComponent() {
     )
   }
 
-  // Vista desktop - diseño original
+  // Vista desktop - diseño original con más altura
   return (
-    <Box py={16} px={4} bg="#eee">
+    <Box py={16} px={4} mx="auto" maxW="container.xl">
       <Box
         maxW="900px"
-        h="500px"
+        h="600px"
         mx="auto"
         bg="white"
         boxShadow="0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)"
@@ -258,17 +258,17 @@ export default function StepsComponent() {
       >
         {/* Left Side - Navigation */}
         <Box
-          h="70%"
+          h="80%"
           w="25%"
           display="flex"
           alignItems="center"
           justifyContent="center"
         >
-          <VStack spacing={2} align="stretch">
+          <VStack spacing={3} align="stretch">
             {steps.map((step, index) => (
               <HStack
                 key={step.id}
-                py={2.5}
+                py={3}
                 cursor="pointer"
                 color={activeStep === index ? "#333" : "rgba(51, 51, 51, 0.5)"}
                 fontWeight="500"
@@ -295,36 +295,36 @@ export default function StepsComponent() {
         </Box>
 
         {/* Border Line */}
-        <Box h="350px" w="1px" bg="rgba(51, 51, 51, 0.2)" position="relative">
+        <Box h="450px" w="1px" bg="rgba(51, 51, 51, 0.2)" position="relative">
           <Box
             w="5px"
             h="54px"
-            bg="#E74C3C"
+            bg="#000000ff"
             ml="-2px"
-            mt={`${35 + (activeStep * 72)}px`}
+            mt={`${50 + (activeStep * 80)}px`}
             transition="all 0.4s ease-in-out"
           />
         </Box>
 
         {/* Right Side - Content */}
-        <Box h="400px" w="75%" overflow="hidden" position="relative">
+        <Box h="500px" w="75%" overflow="hidden" position="relative">
           {steps.map((step, index) => (
             <VStack
               key={step.id}
               position="absolute"
-              h="400px"
+              h="500px"
               w="100%"
               align="center"
               justify="center"
-              spacing={6}
+              spacing={8}
               px={8}
-              transform={activeStep === index ? "translateY(0)" : "translateY(-450px)"}
+              transform={activeStep === index ? "translateY(0)" : "translateY(-550px)"}
               opacity={activeStep === index ? 1 : 0}
               transition="all 0.6s ease-in-out"
             >
               <Box
-                w="64px"
-                h="64px"
+                w="80px"
+                h="80px"
                 fill="rgba(51, 51, 51, 0.5)"
               >
                 {step.icon}
@@ -335,7 +335,8 @@ export default function StepsComponent() {
                 fontWeight="800"
                 color="#333"
                 textAlign="center"
-                size="lg"
+                size="xl"
+                mb={4}
               >
                 {step.title}
               </Heading>
@@ -345,6 +346,8 @@ export default function StepsComponent() {
                 fontWeight="500"
                 textAlign="left"
                 lineHeight="tall"
+                maxW="100%"
+                fontSize="md"
               >
                 {formatDescription(step.description, step)}
               </Box>

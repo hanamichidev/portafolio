@@ -7,7 +7,7 @@
   "nav": {
     "home": "Inicio",
     "about": "Acerca de",
-    "projects": "Proyectos",
+    "projects": "Ultimos Proyectos",
     "contact": "Contacto"
   },
   "sections": {
@@ -29,7 +29,7 @@
     "stack": {
       "label": "Stack Tecnológico",
       "title": "Mi Stack Tecnológico",
-      "description": "• Mobile: Android Nativo (Kotlin, Java) y Flutter.\n\n• Backend: Java (Spring Boot), .NET (C#) y Microservicios.\n\n• Web: Angular y React.\n\n• Base de Datos: MySQL, MongoDB y SQL Server.\n\n• Especialidad: Arquitecturas bancarias, seguridad financiera y despliegue de sistemas de misión crítica."
+      "description": "• Mobile: Android Nativo (Kotlin, Java), Ionic, React Native y Flutter.\n\n• Backend: Java (Spring Boot), .NET (C#) y Microservicios.\n\n• Web: Angular y React.\n\n• Base de Datos: MySQL, MongoDB y SQL Server.\n\n• Cloud (AWS): Implementación en EC2, API Gateway, ECR y bases de datos Aurora.\n\n• Especialidad: Arquitecturas bancarias, seguridad financiera y despliegue de sistemas de misión crítica."
     },
     "achievements": {
       "label": "Logros",

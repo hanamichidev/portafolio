@@ -1,54 +1,60 @@
-import { Box, Container, Heading, Text, VStack } from '@chakra-ui/react'
+import { Box } from '@chakra-ui/react'
 import Menu from '@/components/shared/Navbar/Menu'
 import PresentationBlock from '@shared/PresentationBlock/PresentationBlock'
 import StepsComponent from '@shared/StepsComponent/StepsComponent'
+import ProjectsCarousel from '@shared/ProjectsCarousel/ProjectsCarousel'
 import { useState } from 'react'
 
 export default function Main() {
   const [activeSection, setActiveSection] = useState('home')
+  const [hasTypedOnce, setHasTypedOnce] = useState(false)
+
+  const handleNavigate = (section: string) => {
+    if (activeSection === 'home' && !hasTypedOnce) {
+      setHasTypedOnce(true)
+    }
+    setActiveSection(section)
+  }
 
   const renderActiveSection = () => {
     switch (activeSection) {
       case 'home':
-        return <PresentationBlock />
+        return <PresentationBlock skipTyping={hasTypedOnce} />
       case 'about':
         return <StepsComponent />
       case 'projects':
-        return (
-          <Container maxW="container.xl" py={16}>
-            <VStack align="center" textAlign="center">
-              <Heading as="h2" size="lg" mb={4}>
-                Proyectos
-              </Heading>
-              <Text>Contenido de la sección projects - En construcción</Text>
-            </VStack>
-          </Container>
-        )
+        return <ProjectsCarousel />
       case 'contact':
         return (
-          <Container maxW="container.xl" py={16}>
-            <VStack align="center" textAlign="center">
-              <Heading as="h2" size="lg" mb={4}>
+          <Box 
+            minH="100vh"
+            display="flex"
+            alignItems="center"
+            justifyContent="center"
+            px={4}
+          >
+            <Box textAlign="center">
+              <Box as="h2" fontSize="2xl" fontWeight="bold" mb={4} color="#333">
                 Contacto
-              </Heading>
-              <Text>Contenido de la sección contact - En construcción</Text>
-            </VStack>
-          </Container>
+              </Box>
+              <Box color="#333">Contenido de la sección contact - En construcción</Box>
+            </Box>
+          </Box>
         )
       default:
-        return <PresentationBlock />
+        return <PresentationBlock skipTyping={hasTypedOnce} />
     }
   }
 
   return (
-    <Box>
-      {/* Menu Component */}
-      <Menu
-        onNavigate={setActiveSection}
-        activeSection={activeSection}
-      />
+    <Box bg="#eee" minH="100vh">
+      <Box bg="white">
+        <Menu
+          onNavigate={handleNavigate}
+          activeSection={activeSection}
+        />
+      </Box>
 
-      {/* Render solo la sección activa */}
       {renderActiveSection()}
     </Box>
   )
