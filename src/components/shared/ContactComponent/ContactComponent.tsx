@@ -50,10 +50,10 @@ export default function ContactComponent() {
       _hover={{ bg: "#f8f9fa", transform: "translateX(4px)" }}
       transition="all 0.2s ease"
     >
-      <Box color="#333" mt={1}>
+      <Box color="#333" mt={1} flexShrink={0}>
         {icon}
       </Box>
-      <VStack align="flex-start" spacing={1} flex={1}>
+      <VStack align="flex-start" spacing={1} flex={1} minW={0}>
         <Text fontSize="sm" color="#666" fontWeight="medium">
           {label}
         </Text>
@@ -65,11 +65,19 @@ export default function ContactComponent() {
             color="#333"
             fontWeight="bold"
             _hover={{ color: "#555", textDecoration: "underline" }}
+            wordBreak={isEmail ? "break-all" : "normal"}
+            fontSize={{ base: isEmail ? "sm" : "md", md: "md" }}
+            lineHeight="1.3"
           >
             {value}
           </Link>
         ) : (
-          <Text color="#333" fontWeight="bold">
+          <Text 
+            color="#333" 
+            fontWeight="bold"
+            wordBreak="break-word"
+            fontSize={{ base: "sm", md: "md" }}
+          >
             {value}
           </Text>
         )}
