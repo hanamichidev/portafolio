@@ -15,6 +15,17 @@ export default function StepsComponent() {
 
   const steps: Step[] = [
     {
+      id: 'achievements',
+      title: t('steps.achievements.title'),
+      label: t('steps.achievements.label'),
+      description: t('steps.achievements.description'),
+      icon: <RewardsIcon />,
+      showEvidence: true,
+      evidenceItems: [
+        '• Ganador de Hackatons'
+      ]
+    },
+    {
       id: 'expertise',
       title: t('steps.expertise.title'),
       label: t('steps.expertise.label'),
@@ -29,17 +40,6 @@ export default function StepsComponent() {
       description: t('steps.stack.description'),
       icon: <StackIcon />,
       showEvidence: false
-    },
-    {
-      id: 'achievements',
-      title: t('steps.achievements.title'),
-      label: t('steps.achievements.label'),
-      description: t('steps.achievements.description'),
-      icon: <RewardsIcon />,
-      showEvidence: true,
-      evidenceItems: [
-        '• Ganador de Hackatons'
-      ]
     }
   ]
 

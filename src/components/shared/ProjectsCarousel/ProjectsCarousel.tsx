@@ -27,49 +27,25 @@ const ChevronRightIcon = () => (
 
 export default function ProjectsCarousel() {
   const { t } = useTranslation()
-  const [activeIndex, setActiveIndex] = useState(0)
+  const [activeIndex, setActiveIndex] = useState(0) // Ya inicia en 0 (primera card)
   const isMobile = useBreakpointValue({ base: true, md: false })
 
   // Datos de proyectos
   const projects: Project[] = [
     {
       id: '1',
-      title: 'Calox Sistema Contable',
-      description: 'Desarrollo de sistema contable para ejecutivos de farmaceuticas Calox CR para sacar proyecciones financieras y reportes fiscales.',
-      image: 'https://vip.net.ve/wp-content/uploads/2025/08/IMG_9267.jpeg', // Imagen para mostrar en la card
+      title: 'Calox Sistema Web Contable',
+      description: 'Arquitectura y despliegue de una plataforma web integral para la gestión financiera de Calox CR. Desarrollada con una interfaz de alto desempeño en React y un robusto ecosistema de servicios en C#, la solución automatiza la consolidación fiscal y la generación de proyecciones financieras complejas mediante dashboards ejecutivos de visualización en tiempo real.',
+      image: 'https://www.grupocalox.com/assets/img/gallery/Calox_logo_movil.png',
       technologies: ['React', '.Net C#', 'SQL Server'],
       hasEvidence: true
     },
     {
       id: '2',
-      title: 'Sistema de Robótica Automatizada',
-      description: 'Integración de robots móviles autónomos (MiR) para automatización de almacenes. Desarrollo de APIs para comunicación en tiempo real con sistemas WMS.',
-      image: 'https://picsum.photos/400/250?random=1',
-      technologies: ['C#', '.NET', 'React', 'IoT'],
-      hasEvidence: false
-    },
-    {
-      id: '3',
-      title: 'BAC Credomatic Mobile Banking',
-      description: 'Desarrollo y mantenimiento de aplicación móvil bancaria con más de 500,000 usuarios activos. Implementación de microservicios en Java y integración con sistemas core bancarios.',
-      image: 'https://picsum.photos/400/250?random=2',
-      technologies: ['Java', 'Spring Boot', 'Android', 'Microservicios'],
-      hasEvidence: true
-    },
-    {
-      id: '4',
-      title: 'Plataforma Gubernamental CR',
-      description: 'Modernización de sistemas críticos del Gobierno de Costa Rica. Migración de arquitectura legacy a microservicios con alta disponibilidad.',
-      image: 'https://picsum.photos/400/250?random=3',
-      technologies: ['Java', 'AWS', 'Angular', 'PostgreSQL'],
-      hasEvidence: false
-    },
-    {
-      id: '5',
-      title: 'GFT/Sophos Banking Solutions',
-      description: 'Desarrollo de soluciones bancarias escalables para múltiples entidades financieras. Implementación de arquitecturas de alta disponibilidad.',
-      image: 'https://picsum.photos/400/250?random=4',
-      technologies: ['Java', 'Spring', 'Oracle', 'Kubernetes'],
+      title: 'Aplicación Ruta Cartago',
+      description: 'Ruta Cartago es la aplicación de la Municipalidad de Cartago que le facilita al visitante conocer la ciudad, visitando sitios históricos impresionantes, además de contar con una guía de los locales comerciales y gastronómicos, medios de transporte y hospedaje.',
+      image: 'https://play-lh.googleusercontent.com/002bpgEp-gVKyUgTYxa9eNFWFL9xO6irRPOdqqpTvDviITFqInxtLZ8FJPZ2SaX41w',
+      technologies: ['Angular', 'Ionic', 'Node.js', 'Android'],
       hasEvidence: true
     }
   ]
@@ -88,24 +64,26 @@ export default function ProjectsCarousel() {
 
   const handleEvidenceClick = (projectTitle: string) => {
     console.log(`Mostrando evidencias para: ${projectTitle}`)
-    if (projectTitle === 'Calox Sistema Contable') {
-      // Abre la imagen local de evidencia, no la de la card
+    if (projectTitle === 'Calox Sistema Web Contable') {
       window.open(caloxEvidence, '_blank', 'noopener,noreferrer')
+    } else if (projectTitle === 'Aplicación Ruta Cartago') {
+      window.open('https://play.google.com/store/apps/details?id=prod.cartago.activa&hl=es', '_blank', 'noopener,noreferrer')
     }
   }
 
+  // Auto-avance cada 8 segundos (más tiempo razonable que 25 segundos)
   useEffect(() => {
     const interval = setInterval(() => {
       nextProject()
     }, 8000)
 
     return () => clearInterval(interval)
-  }, [])
+  }, []) // Dependencias vacías para que funcione correctamente
 
   // Función para generar un gradiente temático por proyecto
   const getProjectGradient = (index: number) => {
     const gradients = [
-      'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+      'linear-gradient(135deg, #a9acbbff 0%, #764ba2 100%)',
       'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
       'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)',
       'linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)',
@@ -124,14 +102,14 @@ export default function ProjectsCarousel() {
         alignItems="center"
         justifyContent="center"
       >
-        <VStack spacing={8} maxW="400px" w="full">
+        <VStack spacing={8} maxW="450px" w="full">
           <Heading as="h2" size="lg" color="#333" textAlign="center">
             Últimos Proyectos
           </Heading>
 
           <Box
             w="full"
-            h="600px"
+            h="650px"
             bg="white"
             borderRadius="lg"
             boxShadow="0 10px 30px rgba(0,0,0,0.15)"
@@ -140,7 +118,7 @@ export default function ProjectsCarousel() {
             cursor="pointer"
             border="1px solid #e2e2e2"
           >
-            <Box h="200px" w="full" position="relative">
+            <Box h="220px" w="full" position="relative">
               <Box
                 position="absolute"
                 top="0"
@@ -158,8 +136,9 @@ export default function ProjectsCarousel() {
                   w="full"
                   h="full"
                   backgroundImage={`url(${projects[activeIndex].image})`}
-                  backgroundSize="cover"
+                  backgroundSize={projects[activeIndex].title === 'Calox Sistema Contable' ? "contain" : "cover"}
                   backgroundPosition="center"
+                  backgroundRepeat="no-repeat"
                   opacity="0.9"
                 />
               )}
@@ -175,9 +154,9 @@ export default function ProjectsCarousel() {
             </Box>
             
             <VStack
-              h="calc(100% - 200px)"
+              h="calc(100% - 220px)"
               justify="space-between"
-              p={6}
+              p={7}
               spacing={4}
               align="stretch"
             >
@@ -263,7 +242,7 @@ export default function ProjectsCarousel() {
     )
   }
 
-  // Vista desktop
+  // Vista desktop - aquí está la lógica principal corregida
   return (
     <Box 
       py={16} 
@@ -273,7 +252,7 @@ export default function ProjectsCarousel() {
       alignItems="center"
       justifyContent="center"
     >
-      <VStack spacing={12} maxW="1200px" w="full">
+      <VStack spacing={12} maxW="1300px" w="full">
         <Heading as="h2" size="xl" color="#333" textAlign="center">
           Últimos Proyectos
         </Heading>
@@ -282,8 +261,8 @@ export default function ProjectsCarousel() {
           {projects.map((project, index) => (
             <Box
               key={project.id}
-              w={activeIndex === index ? "400px" : "80px"}
-              h="600px"
+              w={activeIndex === index ? "450px" : "90px"} // La card activa es grande, las demás pequeñas
+              h="650px"
               bg="white"
               borderRadius="lg"
               boxShadow="0 10px 30px rgba(0,0,0,0.15)"
@@ -295,9 +274,10 @@ export default function ProjectsCarousel() {
               _hover={{ transform: "translateY(-5px)" }}
               border="1px solid #e2e2e2"
             >
+              {/* Contenido completo para la card ACTIVA */}
               {activeIndex === index && (
                 <>
-                  <Box h="250px" w="full" position="relative">
+                  <Box h="280px" w="full" position="relative">
                     <Box
                       position="absolute"
                       top="0"
@@ -315,8 +295,9 @@ export default function ProjectsCarousel() {
                         w="full"
                         h="full"
                         backgroundImage={`url(${project.image})`}
-                        backgroundSize="cover"
+                        backgroundSize={project.title === 'Calox Sistema Contable' ? "contain" : "cover"}
                         backgroundPosition="center"
+                        backgroundRepeat="no-repeat"
                         opacity="0.9"
                       />
                     )}
@@ -332,9 +313,9 @@ export default function ProjectsCarousel() {
                   </Box>
                   
                   <VStack
-                    h="calc(100% - 250px)"
+                    h="calc(100% - 280px)"
                     justify="space-between"
-                    p={6}
+                    p={7}
                     spacing={4}
                     align="stretch"
                   >
@@ -382,7 +363,7 @@ export default function ProjectsCarousel() {
                 </>
               )}
 
-              {/* Título vertical para cards inactivas */}
+              {/* Título vertical para cards INACTIVAS */}
               {activeIndex !== index && (
                 <Box
                   position="absolute"
