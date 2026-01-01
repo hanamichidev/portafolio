@@ -4,8 +4,8 @@ import Main from '@pages/Main'
 import ErrorPage from '@pages/Error'
 import './locales/i18n'
 
-// Basename condicional para GitHub Pages
-const basename = window.location.hostname === 'hanamichidev.github.io' ? '/portafolio' : ''
+// Basename condicional más específico
+const basename = import.meta.env.PROD && window.location.hostname.includes('github.io') ? '/portafolio' : ''
 
 const getRouter = () =>
   createBrowserRouter([
@@ -19,7 +19,7 @@ const getRouter = () =>
       element: <ErrorPage />,
     },
   ], {
-    basename: basename  // Agregar el basename aquí
+    basename: basename
   })
 
 function App() {

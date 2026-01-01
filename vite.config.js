@@ -4,7 +4,7 @@ import path from 'path'
 
 export default defineConfig({
   plugins: [react()],
-  base: '/portafolio/',
+  base: process.env.NODE_ENV === 'production' ? '/portafolio/' : '/',
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
@@ -23,5 +23,9 @@ export default defineConfig({
         manualChunks: undefined
       }
     }
+  },
+  server: {
+    port: 5173,
+    host: true
   }
 })
