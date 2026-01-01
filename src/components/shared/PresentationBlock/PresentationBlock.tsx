@@ -21,12 +21,10 @@ export default function PresentationBlock({ skipTyping = false }: PresentationBl
 
   useEffect(() => {
     if (skipTyping) {
-      // Si ya se escribió antes, mostrar todo inmediatamente
       setDisplayText1(text1)
       setDisplayText2(text2)
       setDisplayText3(text3)
       setCurrentLine(3)
-      // NO cambiar showCursor aquí para que siga parpadeando
       return
     }
 
@@ -55,13 +53,12 @@ export default function PresentationBlock({ skipTyping = false }: PresentationBl
   }, [currentLine, text1, text2, text3, skipTyping])
 
   useEffect(() => {
-    // El cursor siempre parpadea, sin importar si se saltó la animación
     const cursorInterval = setInterval(() => {
       setShowCursor(prev => !prev)
     }, 500)
 
     return () => clearInterval(cursorInterval)
-  }, []) // Sin dependencias para que siempre funcione
+  }, [])
 
   const CodeSection = () => (
     <VStack 
@@ -124,7 +121,16 @@ export default function PresentationBlock({ skipTyping = false }: PresentationBl
       alignItems="center"
       justifyContent="center"
     >
-      <Box maxW="container.xl" w="full">
+      {/* Card contenedor blanca */}
+      <Box
+        maxW={{ base: "500px", lg: "1200px" }}
+        w="full"
+        bg="white"
+        borderRadius="xl"
+        boxShadow="0 10px 30px rgba(0,0,0,0.08)"
+        border="1px solid #e2e2e2"
+        p={{ base: 8, lg: 12 }}
+      >
         {/* Desktop Layout - Horizontal */}
         <HStack 
           display={{ base: 'none', lg: 'flex' }}

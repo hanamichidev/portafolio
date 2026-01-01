@@ -2,6 +2,7 @@ import { Box, VStack, Heading, Text, HStack, IconButton, useBreakpointValue, Bad
 import { useState, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import caloxEvidence from '@assets/images/Evidencia Calox.PNG'
+import vampEvidence from '@assets/images/Evidencia Vamp.jpeg'
 
 interface Project {
   id: string
@@ -47,6 +48,14 @@ export default function ProjectsCarousel() {
       image: 'https://play-lh.googleusercontent.com/002bpgEp-gVKyUgTYxa9eNFWFL9xO6irRPOdqqpTvDviITFqInxtLZ8FJPZ2SaX41w',
       technologies: ['Angular', 'Ionic', 'Node.js', 'Android'],
       hasEvidence: true
+    },
+    {
+      id: '3',
+      title: 'Rediseño Aplicación VAMPP BOBINO',
+      description: 'Rediseño y modernización de la interfaz de usuario para la plataforma Vamp Bovino. Mediante el desarrollo de componentes personalizados en JavaFX y Swing, transformé una estética legacy en una experiencia visual de vanguardia, integrando controles de diseño propio que optimizan la usabilidad sin comprometer la integridad funcional de la lógica de negocio preexistente.',
+      image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5jK6ONmgCY9tf0fVfm77cP682IvcXpTR1og&s',
+      technologies: ['Java', 'HTML', 'CSS', 'WEB'],
+      hasEvidence: true
     }
   ]
 
@@ -68,6 +77,8 @@ export default function ProjectsCarousel() {
       window.open(caloxEvidence, '_blank', 'noopener,noreferrer')
     } else if (projectTitle === 'Aplicación Ruta Cartago') {
       window.open('https://play.google.com/store/apps/details?id=prod.cartago.activa&hl=es', '_blank', 'noopener,noreferrer')
+    } else if (projectTitle === 'Rediseño Aplicación VAMPP BOBINO') {
+      window.open(vampEvidence, '_blank', 'noopener,noreferrer')
     }
   }
 
@@ -80,14 +91,14 @@ export default function ProjectsCarousel() {
     return () => clearInterval(interval)
   }, []) // Dependencias vacías para que funcione correctamente
 
-  // Función para generar un gradiente temático por proyecto
+  // Función para generar gradientes grises elegantes y sutiles
   const getProjectGradient = (index: number) => {
     const gradients = [
-      'linear-gradient(135deg, #a9acbbff 0%, #764ba2 100%)',
-      'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
-      'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)',
-      'linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)',
-      'linear-gradient(135deg, #fa709a 0%, #fee140 100%)'
+      'linear-gradient(135deg, #ffffff 0%, #f1f3f4 100%)', // Blanco a gris muy claro
+      'linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%)', // Gris muy claro a claro
+      'linear-gradient(135deg, #f1f3f4 0%, #dee2e6 100%)', // Gris claro neutral
+      'linear-gradient(135deg, #e9ecef 0%, #ced4da 100%)', // Gris claro a medio
+      'linear-gradient(135deg, #dee2e6 0%, #adb5bd 100%)'  // Gris medio elegante
     ]
     return gradients[index % gradients.length]
   }
@@ -136,7 +147,13 @@ export default function ProjectsCarousel() {
                   w="full"
                   h="full"
                   backgroundImage={`url(${projects[activeIndex].image})`}
-                  backgroundSize={projects[activeIndex].title === 'Calox Sistema Contable' ? "contain" : "cover"}
+                  backgroundSize={
+                    projects[activeIndex].title === 'Calox Sistema Web Contable' || 
+                    projects[activeIndex].title === 'Aplicación Ruta Cartago' ||
+                    projects[activeIndex].title === 'Rediseño Aplicación VAMPP BOBINO'
+                      ? "contain" 
+                      : "cover"
+                  }
                   backgroundPosition="center"
                   backgroundRepeat="no-repeat"
                   opacity="0.9"
@@ -295,7 +312,13 @@ export default function ProjectsCarousel() {
                         w="full"
                         h="full"
                         backgroundImage={`url(${project.image})`}
-                        backgroundSize={project.title === 'Calox Sistema Contable' ? "contain" : "cover"}
+                        backgroundSize={
+                          project.title === 'Calox Sistema Web Contable' || 
+                          project.title === 'Aplicación Ruta Cartago' ||
+                          project.title === 'Rediseño Aplicación VAMPP BOBINO'
+                            ? "contain" 
+                            : "cover"
+                        }
                         backgroundPosition="center"
                         backgroundRepeat="no-repeat"
                         opacity="0.9"

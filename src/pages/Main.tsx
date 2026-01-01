@@ -4,6 +4,7 @@ import PresentationBlock from '@shared/PresentationBlock/PresentationBlock'
 import StepsComponent from '@shared/StepsComponent/StepsComponent'
 import ProjectsCarousel from '@shared/ProjectsCarousel/ProjectsCarousel'
 import { useState } from 'react'
+import ContactComponent from '@/components/shared/ContactComponent/ContactComponent'
 
 export default function Main() {
   const [activeSection, setActiveSection] = useState('home')
@@ -25,22 +26,7 @@ export default function Main() {
       case 'projects':
         return <ProjectsCarousel />
       case 'contact':
-        return (
-          <Box 
-            minH="100vh"
-            display="flex"
-            alignItems="center"
-            justifyContent="center"
-            px={4}
-          >
-            <Box textAlign="center">
-              <Box as="h2" fontSize="2xl" fontWeight="bold" mb={4} color="#333">
-                Contacto
-              </Box>
-              <Box color="#333">Contenido de la sección contact - En construcción</Box>
-            </Box>
-          </Box>
-        )
+        return <ContactComponent />
       default:
         return <PresentationBlock skipTyping={hasTypedOnce} />
     }

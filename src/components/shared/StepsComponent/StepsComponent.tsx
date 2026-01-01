@@ -227,9 +227,9 @@ export default function StepsComponent() {
             
             <Button
               onClick={nextStep}
-              bg="#E74C3C"
+              bg="#181616ff"
               color="white"
-              _hover={{ bg: "#c0392b" }}
+              _hover={{ bg: "#c3bbbbff" }}
               size="sm"
               isDisabled={activeStep === steps.length - 1}
             >
